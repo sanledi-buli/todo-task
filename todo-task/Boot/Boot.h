@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+NSUserDefaults *defaults;
+
+#define CURRENT_DEVICE() (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad?@"IPAD":@"NONIPAD")
+
 @interface Boot : NSObject
 
 @end

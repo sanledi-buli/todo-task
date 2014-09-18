@@ -7,12 +7,20 @@
 //
 
 #import "AppDelegate.h"
+#import "MFSideMenuContainerViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    UIStoryboard *storyboard = [CURRENT_DEVICE() isEqualToString:@"IPAD"] ? [UIStoryboard storyboardWithName:@"Main_iPad" bundle:[NSBundle mainBundle]] : [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:[NSBundle mainBundle]];
+
+    MFSideMenuContainerViewController *container = (MFSideMenuContainerViewController *)self.window.rootViewController;
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"navigationController"];
+    UIViewController *leftSideMenuViewController = [storyboard instantiateViewControllerWithIdentifier:@"sideMenuController"];
+    
+    [container setLeftMenuViewController:leftSideMenuViewController];
+    [container setCenterViewController:navigationController];
     return YES;
 }
 							

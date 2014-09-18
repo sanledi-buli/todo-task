@@ -67,6 +67,9 @@
 		52575FF719CA4A5F00F37DD3 /* Boot.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575FF619CA4A5F00F37DD3 /* Boot.m */; };
 		52575FFA19CA4AAA00F37DD3 /* ApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52575FF919CA4AAA00F37DD3 /* ApplicationController.m */; };
 		52575FFD19CA4AF600F37DD3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52575FFB19CA4AF600F37DD3 /* Model.xcdatamodeld */; };
+		525DCFF419CB0469008B1762 /* SideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DCFF319CB0469008B1762 /* SideMenuController.m */; };
+		525DCFF719CB063A008B1762 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DCFF619CB063A008B1762 /* HomeController.m */; };
+		525DCFFA19CB0AFF008B1762 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DCFF919CB0AFF008B1762 /* menu-icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +149,11 @@
 		52575FF819CA4AAA00F37DD3 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		52575FF919CA4AAA00F37DD3 /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		52575FFC19CA4AF600F37DD3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		525DCFF219CB0469008B1762 /* SideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuController.h; sourceTree = "<group>"; };
+		525DCFF319CB0469008B1762 /* SideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuController.m; sourceTree = "<group>"; };
+		525DCFF519CB063A008B1762 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		525DCFF619CB063A008B1762 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		525DCFF919CB0AFF008B1762 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +213,7 @@
 		52575F6519CA40B000F37DD3 /* todo-task */ = {
 			isa = PBXGroup;
 			children = (
+				525DCFF819CB0A89008B1762 /* resources */,
 				52575F9A19CA466800F37DD3 /* Library */,
 				52575F9719CA45FD00F37DD3 /* Boot */,
 				52575F9819CA45FD00F37DD3 /* Controllers */,
@@ -261,8 +270,12 @@
 		52575F9819CA45FD00F37DD3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				525DCFF519CB063A008B1762 /* HomeController.h */,
+				525DCFF619CB063A008B1762 /* HomeController.m */,
 				52575FF819CA4AAA00F37DD3 /* ApplicationController.h */,
 				52575FF919CA4AAA00F37DD3 /* ApplicationController.m */,
+				525DCFF219CB0469008B1762 /* SideMenuController.h */,
+				525DCFF319CB0469008B1762 /* SideMenuController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -356,6 +369,14 @@
 			path = MFSideMenu;
 			sourceTree = "<group>";
 		};
+		525DCFF819CB0A89008B1762 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				525DCFF919CB0AFF008B1762 /* menu-icon@2x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525DCFFA19CB0AFF008B1762 /* menu-icon@2x.png in Resources */,
 				52575F7619CA40B000F37DD3 /* Main_iPad.storyboard in Resources */,
 				52575F7B19CA40B000F37DD3 /* Images.xcassets in Resources */,
 				52575F7319CA40B000F37DD3 /* Main_iPhone.storyboard in Resources */,
@@ -479,6 +501,7 @@
 				52575FE119CA481100F37DD3 /* UIProgressView+AFNetworking.m in Sources */,
 				52575FE219CA481100F37DD3 /* UIRefreshControl+AFNetworking.h in Sources */,
 				52575FE319CA481100F37DD3 /* UIRefreshControl+AFNetworking.m in Sources */,
+				525DCFF419CB0469008B1762 /* SideMenuController.m in Sources */,
 				52575FE419CA481100F37DD3 /* UIWebView+AFNetworking.h in Sources */,
 				52575FE519CA481100F37DD3 /* UIWebView+AFNetworking.m in Sources */,
 				52575FC219CA480300F37DD3 /* AFHTTPRequestOperation.h in Sources */,
@@ -491,6 +514,7 @@
 				52575FC919CA480300F37DD3 /* AFNetworkReachabilityManager.h in Sources */,
 				52575FCA19CA480300F37DD3 /* AFNetworkReachabilityManager.m in Sources */,
 				52575FCB19CA480300F37DD3 /* AFSecurityPolicy.h in Sources */,
+				525DCFF719CB063A008B1762 /* HomeController.m in Sources */,
 				52575FCC19CA480300F37DD3 /* AFSecurityPolicy.m in Sources */,
 				52575FCD19CA480300F37DD3 /* AFURLConnectionOperation.h in Sources */,
 				52575FCE19CA480300F37DD3 /* AFURLConnectionOperation.m in Sources */,
@@ -716,6 +740,7 @@
 				52575F9319CA40B000F37DD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52575F9419CA40B000F37DD3 /* Build configuration list for PBXNativeTarget "todo-taskTests" */ = {
 			isa = XCConfigurationList;
@@ -724,6 +749,7 @@
 				52575F9619CA40B000F37DD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
