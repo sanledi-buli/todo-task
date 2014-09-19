@@ -9,6 +9,7 @@
 #import "SideMenuController.h"
 #import "MFSideMenu.h"
 #import "HomeController.h"
+#import "WebServiceController.h"
 
 @interface SideMenuController ()
 
@@ -70,9 +71,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     defaults = [NSUserDefaults standardUserDefaults];
-    indexPath.row == 0 ? [defaults setObject:@"twitter" forKey:@"currentPage"] : [defaults setObject:@"facebook" forKey:@"currentPage"];
+    WebServiceController *webServiceController = [[WebServiceController alloc] init];
+    if (indexPath.row == 0) {
+        [webServiceController getTweets];
+        [defaults setObject:@"twitter" forKey:@"currentPage"];
+    } else {
+        [defaults setObject:@"facebook" forKey:@"currentPage"];
+    }
     [defaults synchronize];
     HomeController *homeController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
+    
 //    homeController.title = [NSString stringWithFormat:@"Demo #%d-%d", indexPath.section, indexPath.row];
     
     UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
