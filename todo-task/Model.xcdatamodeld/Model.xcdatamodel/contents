@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+    <entity name="Facebook" syncable="YES"/>
+    <entity name="Replay" representedClassName="Replay" syncable="YES">
+        <attribute name="replayBody" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="twitter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Twitter" inverseName="replays" inverseEntity="Twitter" syncable="YES"/>
+    </entity>
+    <entity name="Twitter" representedClassName="Twitter" syncable="YES">
+        <attribute name="countRetweet" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="tweetBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweetDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="tweetId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="replays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Replay" inverseName="twitter" inverseEntity="Replay" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Twitter" positionX="-144" positionY="179" width="128" height="118"/>
+        <element name="Facebook" positionX="-54" positionY="18" width="128" height="45"/>
+        <element name="Replay" positionX="34" positionY="179" width="128" height="73"/>
+    </elements>
 </model>

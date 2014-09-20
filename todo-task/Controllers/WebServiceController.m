@@ -68,7 +68,7 @@
                                               [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                                                   NSArray *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
                                                                                                         options:NSJSONReadingMutableLeaves error:&error];
-                                                  if ([dataSource count] > 0) {
+                                                  if (dataSource && [dataSource count] > 0) {
                                                       [WebService parserResourcesTwitter:dataSource];
                                                   }
                                               }];
