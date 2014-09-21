@@ -66,10 +66,14 @@
                                               postRequest.account = twitterAccount;
                                               
                                               [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                                                  NSArray *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
-                                                                                                        options:NSJSONReadingMutableLeaves error:&error];
-                                                  if (dataSource && [dataSource count] > 0) {
-                                                      [WebService parserResourcesTwitter:dataSource];
+                                                  if (!error) {
+                                                      NSArray *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                                            options:NSJSONReadingMutableLeaves error:&error];
+                                                      if ([dataSource count] > 0) {
+                                                          [WebService parserResourcesTwitter:dataSource];
+                                                      }
+                                                  } else {
+                                                      NSLog(@"%@",error);
                                                   }
                                               }];
                                           }
@@ -102,10 +106,14 @@
                                               SLRequest *postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestURL parameters:params];
                                               postRequest.account = twitterAccount;
                                               [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                                                  NSDictionary *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
-                                                                                                        options:NSJSONReadingMutableLeaves error:&error];
-                                                  if (dataSource && [dataSource count] > 0) {
-                                                      [WebService parserResourcesTwitterAccount:dataSource];
+                                                  if (!error) {
+                                                      NSDictionary *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                                                 options:NSJSONReadingMutableLeaves error:&error];
+                                                      if ([dataSource count] > 0) {
+                                                          [WebService parserResourcesTwitterAccount:dataSource];
+                                                      }
+                                                  } else {
+                                                      NSLog(@"%@",error);
                                                   }
                                               }];
                                               
