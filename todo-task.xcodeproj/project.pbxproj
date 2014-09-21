@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5243483619CF0E0C0016F32B /* TwitterAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5243483519CF0E0C0016F32B /* TwitterAccount.m */; };
+		5243483919CF0E470016F32B /* TwitterAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5243483819CF0E470016F32B /* TwitterAccountManager.m */; };
 		52575F6019CA40B000F37DD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52575F5F19CA40B000F37DD3 /* Foundation.framework */; };
 		52575F6219CA40B000F37DD3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52575F6119CA40B000F37DD3 /* CoreGraphics.framework */; };
 		52575F6419CA40B000F37DD3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52575F6319CA40B000F37DD3 /* UIKit.framework */; };
@@ -55,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5243483419CF0E0C0016F32B /* TwitterAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccount.h; sourceTree = "<group>"; };
+		5243483519CF0E0C0016F32B /* TwitterAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccount.m; sourceTree = "<group>"; };
+		5243483719CF0E470016F32B /* TwitterAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccountManager.h; sourceTree = "<group>"; };
+		5243483819CF0E470016F32B /* TwitterAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccountManager.m; sourceTree = "<group>"; };
 		52575F5C19CA40B000F37DD3 /* todo-task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todo-task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52575F5F19CA40B000F37DD3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		52575F6119CA40B000F37DD3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -244,6 +250,8 @@
 		52575F9919CA45FD00F37DD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5243483419CF0E0C0016F32B /* TwitterAccount.h */,
+				5243483519CF0E0C0016F32B /* TwitterAccount.m */,
 				52F7338619CC83EB0036E5B1 /* Replay.h */,
 				52F7338719CC83EB0036E5B1 /* Replay.m */,
 				52F7338319CC83EA0036E5B1 /* Twitter.h */,
@@ -294,6 +302,8 @@
 		52F7337D19CC7A520036E5B1 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				5243483719CF0E470016F32B /* TwitterAccountManager.h */,
+				5243483819CF0E470016F32B /* TwitterAccountManager.m */,
 				52F7337E19CC7A750036E5B1 /* TwitterManager.h */,
 				52F7337F19CC7A750036E5B1 /* TwitterManager.m */,
 			);
@@ -410,9 +420,11 @@
 				52F7338019CC7A750036E5B1 /* TwitterManager.m in Sources */,
 				52575FF719CA4A5F00F37DD3 /* Boot.m in Sources */,
 				52575FFD19CA4AF600F37DD3 /* Model.xcdatamodeld in Sources */,
+				5243483619CF0E0C0016F32B /* TwitterAccount.m in Sources */,
 				52575FFA19CA4AAA00F37DD3 /* ApplicationController.m in Sources */,
 				52F7338819CC83EB0036E5B1 /* Replay.m in Sources */,
 				525DD00219CB2F51008B1762 /* WebServiceController.m in Sources */,
+				5243483919CF0E470016F32B /* TwitterAccountManager.m in Sources */,
 				525DCFF419CB0469008B1762 /* SideMenuController.m in Sources */,
 				525DCFF719CB063A008B1762 /* HomeController.m in Sources */,
 				52F7338519CC83EA0036E5B1 /* Twitter.m in Sources */,

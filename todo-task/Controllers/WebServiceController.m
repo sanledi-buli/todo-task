@@ -52,7 +52,7 @@
                                                                       accountsWithAccountType:accountType];
                                           if ([arrayOfAccounts count] > 0) {
                                               ACAccount *twitterAccount = [arrayOfAccounts lastObject];
-                                              NSURL *requestURL = [NSURL URLWithString:TWITTER_API_URI];
+                                              NSURL *requestURL = [NSURL URLWithString:TWITTER_API_TIMELINE_URI];
                                               NSDictionary *params = @{
                                                                        @"screen_name": TWITTER_SCREEN_NAME,
                                                                        @"include_rts": @"0",
@@ -80,6 +80,43 @@
                                       else{
                                           NSLog(@"Not granted");
                                       }
+                                  }];
+}
+
+/* GET twitter account details */
+
+- (void)getTwitterAccountDetails{
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil
+                                  completion:^(BOOL granted, NSError *error) {
+                                      if (granted == YES) {
+                                          NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
+                                          if ([arrayOfAccounts count] > 0) {
+                                              ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                                              NSURL *requestURL = [NSURL URLWithString:TWITTER_API_SHOW_URI];
+                                              NSDictionary *params = @{
+                                                                       @"screen_name": TWITTER_SCREEN_NAME};
+                                              SLRequest *postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestURL parameters:params];
+                                              postRequest.account = twitterAccount;
+                                              [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                                                  NSDictionary *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                                        options:NSJSONReadingMutableLeaves error:&error];
+                                                  if (dataSource && [dataSource count] > 0) {
+                                                      [WebService parserResourcesTwitterAccount:dataSource];
+                                                  }
+                                              }];
+                                              
+                                              
+                                          } else {
+                                              NSLog(@"No account on accountStore");
+                                          }
+                                      } else {
+                                          NSLog(@"Not granted");
+                                      }
+                                      
                                   }];
 }
 

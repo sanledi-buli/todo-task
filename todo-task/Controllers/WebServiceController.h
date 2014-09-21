@@ -12,4 +12,5 @@
 
 @interface WebServiceController : ApplicationController
 - (void)getTweets;
+- (void)getTwitterAccountDetails;
 @end

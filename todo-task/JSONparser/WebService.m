@@ -9,6 +9,8 @@
 #import "WebService.h"
 #import "TwitterManager.h"
 #import "Twitter.h"
+#import "TwitterAccountManager.h"
+#import "TwitterAccount.h"
 
 @interface WebService (){
     NSArray *resourceData;
@@ -27,6 +29,14 @@
         [tweet setCountRetweet:data[@"retweeted"]];
         [TwitterManager saveTweet:tweet];
     }
+}
+
++ (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource{
+    [TwitterAccountManager deleteAll];
+    TwitterAccount *twitterAccount = [TwitterAccountManager newTwitterAccount];
+        [twitterAccount setAccountName:dataSource[@"name"]];
+        [twitterAccount setAccountProfilePicture:dataSource[@"profile_image_url_https"]];
+        [TwitterAccountManager saveTwitterAccount:twitterAccount];
 }
 
 + (NSDate *)toDate:(id)createdAt{

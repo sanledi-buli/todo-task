@@ -11,5 +11,6 @@
 @interface WebService : NSObject
 
 + (void)parserResourcesTwitter:(NSArray *)dataSource;
++ (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource;
 
 @end

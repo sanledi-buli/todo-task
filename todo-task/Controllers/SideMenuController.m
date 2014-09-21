@@ -74,9 +74,12 @@
     WebServiceController *webServiceController = [[WebServiceController alloc] init];
     if (indexPath.row == 0) {
         [webServiceController getTweets];
+        [webServiceController getTwitterAccountDetails];
         [defaults setObject:@"twitter" forKey:@"currentPage"];
-    } else {
+    } else if(indexPath.row == 1) {
         [defaults setObject:@"facebook" forKey:@"currentPage"];
+    } else {
+        [defaults setObject:@"" forKey:@"currentPage"];
     }
     [defaults synchronize];
     HomeController *homeController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
