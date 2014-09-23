@@ -128,6 +128,32 @@
                                   }];
 }
 
+/* GET Facebook feed */
+
+- (void)getFeedFacebookByUserID{
+    NSArray *permission = [[NSArray alloc] initWithObjects:@"public_profile",@"read_stream", nil];
+    [FBSession
+     openActiveSessionWithReadPermissions:permission
+     allowLoginUI:YES
+     completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+         if (!error) {
+             [FBRequestConnection
+              startWithGraphPath:[NSString stringWithFormat:@"/%@/feed",FACEBOOK_USER_ID]
+              parameters:nil
+              HTTPMethod:@"GET"
+              completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                  if (!error) {
+                      NSLog(@"%@",result);
+                  } else {
+                      NSLog(@"%@",[error localizedDescription]);
+                  }
+              }];
+         }else{
+             NSLog(@"%@",[error localizedDescription]);
+         }
+     }];
+}
+
 /*
 #pragma mark - Navigation
 

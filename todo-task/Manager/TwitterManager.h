@@ -15,6 +15,7 @@
 + (void)saveTweet:(Twitter *)tweet;
 + (NSArray *)getAllRecords;
 + (void)deleteAll;
++ (Twitter *)getByTweetId:(NSString *)tweetId;
 
 
 

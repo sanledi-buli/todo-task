@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		523FB91919D0600C00E4FC43 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FB91819D0600C00E4FC43 /* HomeTableViewCell.m */; };
 		5243483619CF0E0C0016F32B /* TwitterAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5243483519CF0E0C0016F32B /* TwitterAccount.m */; };
 		5243483919CF0E470016F32B /* TwitterAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5243483819CF0E470016F32B /* TwitterAccountManager.m */; };
 		52575F6019CA40B000F37DD3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52575F5F19CA40B000F37DD3 /* Foundation.framework */; };
@@ -37,6 +38,11 @@
 		525DCFF719CB063A008B1762 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DCFF619CB063A008B1762 /* HomeController.m */; };
 		525DCFFA19CB0AFF008B1762 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DCFF919CB0AFF008B1762 /* menu-icon@2x.png */; };
 		525DD00219CB2F51008B1762 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DD00119CB2F51008B1762 /* WebServiceController.m */; };
+		52B93FAF19D0FC4000E9655B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B93FAE19D0FC4000E9655B /* FacebookSDK.framework */; };
+		52B93FB219D1135900E9655B /* reply-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B93FB019D1133700E9655B /* reply-icon.png */; };
+		52B93FB519D11A1500E9655B /* retweet-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B93FB319D11A0600E9655B /* retweet-128.png */; };
+		52B93FBB19D12A8B00E9655B /* TwitterDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B93FBA19D12A8B00E9655B /* TwitterDetailsTableViewCell.m */; };
+		52B93FC119D1306600E9655B /* TweetDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B93FC019D1306600E9655B /* TweetDetailsController.m */; };
 		52F7337619CC5D050036E5B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F7337519CC5D050036E5B1 /* Social.framework */; };
 		52F7337819CC5D210036E5B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F7337719CC5D210036E5B1 /* Accounts.framework */; };
 		52F7337C19CC5ED00036E5B1 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F7337B19CC5ED00036E5B1 /* WebService.m */; };
@@ -57,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		523FB91719D0600C00E4FC43 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		523FB91819D0600C00E4FC43 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		5243483419CF0E0C0016F32B /* TwitterAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccount.h; sourceTree = "<group>"; };
 		5243483519CF0E0C0016F32B /* TwitterAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccount.m; sourceTree = "<group>"; };
 		5243483719CF0E470016F32B /* TwitterAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccountManager.h; sourceTree = "<group>"; };
@@ -99,6 +107,13 @@
 		525DD00019CB2F51008B1762 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
 		525DD00119CB2F51008B1762 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
 		525DD00319CB36A3008B1762 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		52B93FAE19D0FC4000E9655B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		52B93FB019D1133700E9655B /* reply-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-icon.png"; sourceTree = "<group>"; };
+		52B93FB319D11A0600E9655B /* retweet-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-128.png"; sourceTree = "<group>"; };
+		52B93FB919D12A8B00E9655B /* TwitterDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterDetailsTableViewCell.h; sourceTree = "<group>"; };
+		52B93FBA19D12A8B00E9655B /* TwitterDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterDetailsTableViewCell.m; sourceTree = "<group>"; };
+		52B93FBF19D1306600E9655B /* TweetDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetDetailsController.h; sourceTree = "<group>"; };
+		52B93FC019D1306600E9655B /* TweetDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetDetailsController.m; sourceTree = "<group>"; };
 		52F7337519CC5D050036E5B1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		52F7337719CC5D210036E5B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		52F7337A19CC5ED00036E5B1 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
@@ -123,6 +138,7 @@
 				52575F6219CA40B000F37DD3 /* CoreGraphics.framework in Frameworks */,
 				52575F6419CA40B000F37DD3 /* UIKit.framework in Frameworks */,
 				52575F6019CA40B000F37DD3 /* Foundation.framework in Frameworks */,
+				52B93FAF19D0FC4000E9655B /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +155,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		523FB91619D05FD600E4FC43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52B93FB919D12A8B00E9655B /* TwitterDetailsTableViewCell.h */,
+				52B93FBA19D12A8B00E9655B /* TwitterDetailsTableViewCell.m */,
+				523FB91719D0600C00E4FC43 /* HomeTableViewCell.h */,
+				523FB91819D0600C00E4FC43 /* HomeTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		52575F5319CA40B000F37DD3 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +188,7 @@
 		52575F5E19CA40B000F37DD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52B93FAE19D0FC4000E9655B /* FacebookSDK.framework */,
 				52F7338119CC82380036E5B1 /* CoreData.framework */,
 				52F7337719CC5D210036E5B1 /* Accounts.framework */,
 				52F7337519CC5D050036E5B1 /* Social.framework */,
@@ -176,6 +204,7 @@
 		52575F6519CA40B000F37DD3 /* todo-task */ = {
 			isa = PBXGroup;
 			children = (
+				523FB91619D05FD600E4FC43 /* View */,
 				52F7337D19CC7A520036E5B1 /* Manager */,
 				52F7337919CC5E910036E5B1 /* JSONparser */,
 				525DCFF819CB0A89008B1762 /* resources */,
@@ -235,6 +264,8 @@
 		52575F9819CA45FD00F37DD3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52B93FBF19D1306600E9655B /* TweetDetailsController.h */,
+				52B93FC019D1306600E9655B /* TweetDetailsController.m */,
 				525DD00019CB2F51008B1762 /* WebServiceController.h */,
 				525DD00119CB2F51008B1762 /* WebServiceController.m */,
 				525DCFF519CB063A008B1762 /* HomeController.h */,
@@ -285,6 +316,8 @@
 		525DCFF819CB0A89008B1762 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				52B93FB319D11A0600E9655B /* retweet-128.png */,
+				52B93FB019D1133700E9655B /* reply-icon.png */,
 				525DCFF919CB0AFF008B1762 /* menu-icon@2x.png */,
 			);
 			path = resources;
@@ -386,6 +419,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B93FB519D11A1500E9655B /* retweet-128.png in Resources */,
+				52B93FB219D1135900E9655B /* reply-icon.png in Resources */,
 				525DCFFA19CB0AFF008B1762 /* menu-icon@2x.png in Resources */,
 				52575F7619CA40B000F37DD3 /* Main_iPad.storyboard in Resources */,
 				52575F7B19CA40B000F37DD3 /* Images.xcassets in Resources */,
@@ -423,10 +458,13 @@
 				5243483619CF0E0C0016F32B /* TwitterAccount.m in Sources */,
 				52575FFA19CA4AAA00F37DD3 /* ApplicationController.m in Sources */,
 				52F7338819CC83EB0036E5B1 /* Replay.m in Sources */,
+				52B93FC119D1306600E9655B /* TweetDetailsController.m in Sources */,
+				523FB91919D0600C00E4FC43 /* HomeTableViewCell.m in Sources */,
 				525DD00219CB2F51008B1762 /* WebServiceController.m in Sources */,
 				5243483919CF0E470016F32B /* TwitterAccountManager.m in Sources */,
 				525DCFF419CB0469008B1762 /* SideMenuController.m in Sources */,
 				525DCFF719CB063A008B1762 /* HomeController.m in Sources */,
+				52B93FBB19D12A8B00E9655B /* TwitterDetailsTableViewCell.m in Sources */,
 				52F7338519CC83EA0036E5B1 /* Twitter.m in Sources */,
 				52575F7019CA40B000F37DD3 /* AppDelegate.m in Sources */,
 				52575F6C19CA40B000F37DD3 /* main.m in Sources */,
@@ -564,6 +602,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "todo-task/todo-task-Prefix.pch";
 				INFOPLIST_FILE = "todo-task/todo-task-Info.plist";
@@ -577,6 +619,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "todo-task/todo-task-Prefix.pch";
 				INFOPLIST_FILE = "todo-task/todo-task-Info.plist";

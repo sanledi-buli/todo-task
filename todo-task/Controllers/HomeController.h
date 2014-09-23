@@ -7,8 +7,11 @@
 //
 
 #import "ApplicationController.h"
+#import "HomeTableViewCell.h"
 
-@interface HomeController : ApplicationController
+@interface HomeController : ApplicationController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+
 - (IBAction)menuTapped:(id)sender;
 
 @end

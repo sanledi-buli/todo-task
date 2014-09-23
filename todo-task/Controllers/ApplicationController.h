@@ -10,4 +10,6 @@
 
 @interface ApplicationController : UIViewController
 
+- (NSString *)dateFormatter:(NSDate *)sourceDate;
+
 @end

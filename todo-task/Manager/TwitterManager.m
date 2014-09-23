@@ -31,7 +31,7 @@
 + (NSArray *)getAllRecords{
     NSManagedObjectContext * managedObjectContext = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([Twitter class]) inManagedObjectContext:managedObjectContext];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(tweetDate)) ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:NSStringFromSelector(@selector(tweetDate)) ascending:NO];
     NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entityDescription];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
@@ -45,6 +45,24 @@
         return tweets;
     }else{
         NSLog(@"No record in %@",NSStringFromClass([Twitter class]));
+    }
+    return nil;
+}
+
++ (Twitter *)getByTweetId:(NSString *)tweetId{
+    NSManagedObjectContext * managedObjectContext = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([Twitter class]) inManagedObjectContext:managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tweetId = %@",tweetId];
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entityDescription];
+    [fetchRequest setPredicate:predicate];
+    NSError *error;
+    NSArray *tweets = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (!tweets) {
+        NSLog(@"%@", [error localizedDescription]);
+        return nil;
+    }else if([tweets count] > 0){
+        return [tweets lastObject];
     }
     return nil;
 }

@@ -8,9 +8,13 @@
 
 #import "HomeController.h"
 #import "MFSideMenu.h"
+#import "TwitterManager.h"
+#import "TwitterAccountManager.h"
+#import "WebServiceController.h"
 
-@interface HomeController ()
-
+@interface HomeController (){
+    NSString *currentPage;
+}
 @end
 
 @implementation HomeController
@@ -27,13 +31,75 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    defaults = [NSUserDefaults standardUserDefaults];
+    WebServiceController *webServiceController = [[WebServiceController alloc] init];
+    if ([[defaults objectForKey:@"currentPage"] isEqualToString:@"twitter"]) {
+        currentPage = @"twitter";
+        [webServiceController getTweets];
+        [webServiceController getTwitterAccountDetails];
+    } else if([[defaults objectForKey:@"currentPage"] isEqualToString:@"facebook"]) {
+         [webServiceController getFeedFacebookByUserID];
+    }else{
+    
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/* pragma table view */
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if ([currentPage isEqualToString:@"twitter"]) {
+        return [[TwitterManager getAllRecords] count];
+    }else if ([currentPage isEqualToString:@"facebook"]){
+        return 10;
+    }
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *homeCellIdentifier = @"homeTableViewCell";
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellIdentifier];
+    if ([currentPage isEqualToString:@"twitter"]) {
+        NSArray *tweets = [TwitterManager getAllRecords];
+        Twitter *tweet = [tweets objectAtIndex:indexPath.row];
+        TwitterAccount *twitterAccount = [[TwitterAccountManager getAllRecords] lastObject];
+        
+        [cell.userName setText:twitterAccount.accountName];
+        [cell.screenName setText:[NSString stringWithFormat:@"@%@",TWITTER_SCREEN_NAME]];
+        cell.mainContent.lineBreakMode = NSLineBreakByWordWrapping;
+        cell.mainContent.numberOfLines = 0;
+        [cell.mainContent setText:tweet.tweetBody];
+        [cell.dateCreated setText:[self dateFormatter:tweet.tweetDate]];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:twitterAccount.accountProfilePicture]];
+        [cell.profilePicture setImage:[UIImage imageWithData:imageData]];
+        [cell.replyBtn setImage:[UIImage imageNamed:@"reply-icon.png"] forState:UIControlStateNormal];
+        [cell.replyBtn addTarget:self action:@selector(replyTweet:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+        [cell.replyBtn setTitle:@"" forState:UIControlStateNormal];
+        [cell.likeBtn setImage:[UIImage imageNamed:@"retweet-128.png"] forState:UIControlStateNormal];
+        [cell.likeBtn addTarget:self action:@selector(reTweet:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+        [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];
+    } else {
+        
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([currentPage isEqualToString:@"twitter"]) {
+        Twitter *tweet = [[TwitterManager getAllRecords] objectAtIndex:indexPath.row];
+        [defaults setObject:tweet.tweetId forKey:@"currentTweet"];
+        [defaults synchronize];
+        [self performSegueWithIdentifier:@"twitterDetails" sender:self];
+    }
 }
 
 /*
@@ -50,4 +116,17 @@
 - (IBAction)menuTapped:(id)sender {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
 }
+
+- (IBAction)replyTweet:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reply" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (IBAction)reTweet:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Do you want retweet this tweet ?" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Cancel", nil];
+    [alert show];
+}
+
+
 @end

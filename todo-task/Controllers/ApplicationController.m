@@ -35,6 +35,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+/* pragma date */
+
+- (NSString *)dateFormatter:(NSDate *)sourceDate{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Jakarta"]];
+    [dateFormat setDateFormat:@"dd/MM/YYYY HH:mm:ss"];
+    NSString *stringFromDate = [dateFormat stringFromDate:sourceDate];
+    return stringFromDate;
+}
+
 /*
 #pragma mark - Navigation
 

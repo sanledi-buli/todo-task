@@ -71,10 +71,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     defaults = [NSUserDefaults standardUserDefaults];
-    WebServiceController *webServiceController = [[WebServiceController alloc] init];
+    
     if (indexPath.row == 0) {
-        [webServiceController getTweets];
-        [webServiceController getTwitterAccountDetails];
         [defaults setObject:@"twitter" forKey:@"currentPage"];
     } else if(indexPath.row == 1) {
         [defaults setObject:@"facebook" forKey:@"currentPage"];
