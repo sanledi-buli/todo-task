@@ -11,5 +11,8 @@
 @interface ApplicationController : UIViewController
 
 - (NSString *)dateFormatter:(NSDate *)sourceDate;
+- (IBAction)replyTweet:(id)sender;
+- (IBAction)reTweet:(id)sender;
+
 
 @end

@@ -60,8 +60,10 @@
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:twitterAccount.accountProfilePicture]];
     [cell.profilePicture setImage:[UIImage imageWithData:imageData]];
     [cell.replyBtn setImage:[UIImage imageNamed:@"reply-icon.png"] forState:UIControlStateNormal];
+    [cell.replyBtn addTarget:self action:@selector(replyTweet:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [cell.replyBtn setTitle:@"" forState:UIControlStateNormal];
     [cell.likeBtn setImage:[UIImage imageNamed:@"retweet-128.png"] forState:UIControlStateNormal];
+    [cell.likeBtn addTarget:self action:@selector(reTweet:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
     [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];
     
     return cell;

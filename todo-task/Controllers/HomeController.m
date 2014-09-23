@@ -117,16 +117,4 @@
     [self.menuContainerViewController toggleLeftSideMenuCompletion:nil];
 }
 
-- (IBAction)replyTweet:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reply" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
-}
-
-- (IBAction)reTweet:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Do you want retweet this tweet ?" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Cancel", nil];
-    [alert show];
-}
-
-
 @end
