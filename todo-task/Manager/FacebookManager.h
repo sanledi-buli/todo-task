@@ -14,7 +14,7 @@
 + (Facebook *)newStatus;
 + (void)saveStatus:(Facebook *)status;
 + (NSArray *)getAllRecords;
-+ (Facebook *)getByStatusId:(NSNumber *)statusId;
++ (Facebook *)getByStatusId:(NSString *)statusId;
 + (void)deleteAll;
 
 @end

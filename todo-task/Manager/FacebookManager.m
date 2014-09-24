@@ -47,7 +47,7 @@
     return nil;
 }
 
-+ (Facebook *)getByStatusId:(NSNumber *)statusId{
++ (Facebook *)getByStatusId:(NSString *)statusId{
     NSManagedObjectContext * managedObjectContext = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) managedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([Facebook class]) inManagedObjectContext:managedObjectContext];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"statusId = %@",statusId];

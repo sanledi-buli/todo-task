@@ -40,8 +40,6 @@
     } else if([[defaults objectForKey:@"currentPage"] isEqualToString:@"facebook"]) {
         currentPage = @"facebook";
          [webServiceController getStatusFB];
-    }else{
-    
     }
 }
 
@@ -72,8 +70,6 @@
     if ([currentPage isEqualToString:@"twitter"]) {
         NSArray *tweets = [TwitterManager getAllRecords];
         Twitter *tweet = [tweets objectAtIndex:indexPath.row];
-        [defaults setObject:tweet.tweetBody forKey:@"currenContent"];
-        [defaults synchronize];
         TwitterAccount *twitterAccount = [[TwitterAccountManager getAllRecords] lastObject];
         
         [cell.userName setText:twitterAccount.accountName];
@@ -93,9 +89,6 @@
     } else if([currentPage isEqualToString:@"facebook"]) {
         NSArray *statuses = [FacebookManager getAllRecords];
         Facebook *status = [statuses objectAtIndex:indexPath.row];
-        [defaults setObject:status.statusFB forKey:@"currentContent"];
-        [defaults synchronize];
-        
         [cell.userName setText:status.accountFB];
         [cell.screenName setText:@""];
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:FACEBOOK_PROFILE_PICTURE]];
@@ -114,10 +107,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([currentPage isEqualToString:@"twitter"]) {
         Twitter *tweet = [[TwitterManager getAllRecords] objectAtIndex:indexPath.row];
-        [defaults setObject:tweet.tweetId forKey:@"currentTweet"];
+        [defaults setObject:tweet.tweetId forKey:@"currentID"];
         [defaults synchronize];
-        [self performSegueWithIdentifier:@"twitterDetails" sender:self];
+    } else if([currentPage isEqualToString:@"facebook"]){
+        Facebook *status = [[FacebookManager getAllRecords] objectAtIndex:indexPath.row];
+        [defaults setObject:status.statusId forKey:@"currentID"];
+        [defaults synchronize];
     }
+    [self performSegueWithIdentifier:@"twitterDetails" sender:self];
 }
 
 /*
