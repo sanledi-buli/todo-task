@@ -18,7 +18,7 @@ NSUserDefaults *defaults;
 #define TWITTER_SCREEN_NAME @"7Langit"
 
 // Facebook API
-#define FACEBOOK_API_URI @"https://graph.facebook.com/"
+#define FACEBOOK_API_URI @"https://graph.facebook.com"
 #define FACEBOOK_USER_ID @"177321525623964"
 #define FACEBOOK_APP_ID @"577325145727529"
 

@@ -39,6 +39,12 @@
         [TwitterAccountManager saveTwitterAccount:twitterAccount];
 }
 
++ (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource{
+    for (id data in dataSource){
+    
+    }
+}
+
 + (NSDate *)toDate:(id)createdAt{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];

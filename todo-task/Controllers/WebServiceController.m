@@ -128,31 +128,55 @@
                                   }];
 }
 
-/* GET Facebook feed */
+/* GET Facebook status */
 
-- (void)getFeedFacebookByUserID{
-    NSArray *permission = [[NSArray alloc] initWithObjects:@"public_profile",@"read_stream", nil];
-    [FBSession
-     openActiveSessionWithReadPermissions:permission
-     allowLoginUI:YES
-     completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-         if (!error) {
-             [FBRequestConnection
-              startWithGraphPath:[NSString stringWithFormat:@"/%@/feed",FACEBOOK_USER_ID]
-              parameters:nil
-              HTTPMethod:@"GET"
-              completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                  if (!error) {
-                      NSLog(@"%@",result);
-                  } else {
-                      NSLog(@"%@",[error localizedDescription]);
-                  }
-              }];
-         }else{
-             NSLog(@"%@",[error localizedDescription]);
-         }
-     }];
+- (void)getStatusFB{
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountTypeFacebook =
+    [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    NSDictionary *options = @{
+                              ACFacebookAppIdKey: FACEBOOK_APP_ID,
+                              ACFacebookPermissionsKey: @[@"read_stream",@"publish_actions"],
+                              ACFacebookAudienceKey: ACFacebookAudienceFriends
+                            };
+    [accountStore requestAccessToAccountsWithType:accountTypeFacebook
+                                          options:options
+                                       completion:^(BOOL granted, NSError *error){
+                                           if(granted){
+                                               ACAccount *facebookAccount;
+                                               NSArray *accounts = [accountStore accountsWithAccountType:accountTypeFacebook];
+                                               facebookAccount = [accounts lastObject];
+                                               NSURL *feedURL = [NSURL
+                                                                 URLWithString:[NSString
+                                                                                stringWithFormat:@"%@/%@/statuses?limit=10&access_token=%@",FACEBOOK_API_URI,FACEBOOK_USER_ID,facebookAccount.credential.oauthToken]];
+                                               
+                                               SLRequest *feedRequest = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                                                                           requestMethod:SLRequestMethodGET
+                                                                                                     URL:feedURL
+                                                                                              parameters:nil];
+                                               [feedRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+                                                {
+                                                    if (!error) {
+                                                        NSDictionary *rawData = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                                                   options:NSJSONReadingMutableLeaves
+                                                                                                                     error:&error];
+                                                        if (rawData) {
+                                                            NSDictionary *sourceData = rawData[@"data"];
+                                                            [WebService parserResourcesFacebookStatuses:sourceData];
+                                                        }
+                                                        
+                                                    } else {
+                                                        NSLog(@"%@",[error localizedDescription]);
+                                                    }
+                                                }];
+                                           } else {
+                                               NSLog(@"Access Denied");
+                                               NSLog(@"[%@]",[error localizedDescription]);
+                                           }
+                                       }
+     ];
 }
+
 
 /*
 #pragma mark - Navigation

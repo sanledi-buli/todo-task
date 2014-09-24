@@ -38,7 +38,7 @@
         [webServiceController getTweets];
         [webServiceController getTwitterAccountDetails];
     } else if([[defaults objectForKey:@"currentPage"] isEqualToString:@"facebook"]) {
-         [webServiceController getFeedFacebookByUserID];
+         [webServiceController getStatusFB];
     }else{
     
     }

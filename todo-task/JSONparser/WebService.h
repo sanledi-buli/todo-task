@@ -12,5 +12,6 @@
 
 + (void)parserResourcesTwitter:(NSArray *)dataSource;
 + (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource;
++ (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource;
 
 @end

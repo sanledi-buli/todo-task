@@ -38,7 +38,6 @@
 		525DCFF719CB063A008B1762 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DCFF619CB063A008B1762 /* HomeController.m */; };
 		525DCFFA19CB0AFF008B1762 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DCFF919CB0AFF008B1762 /* menu-icon@2x.png */; };
 		525DD00219CB2F51008B1762 /* WebServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DD00119CB2F51008B1762 /* WebServiceController.m */; };
-		52B93FAF19D0FC4000E9655B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B93FAE19D0FC4000E9655B /* FacebookSDK.framework */; };
 		52B93FB219D1135900E9655B /* reply-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B93FB019D1133700E9655B /* reply-icon.png */; };
 		52B93FB519D11A1500E9655B /* retweet-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B93FB319D11A0600E9655B /* retweet-128.png */; };
 		52B93FBB19D12A8B00E9655B /* TwitterDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B93FBA19D12A8B00E9655B /* TwitterDetailsTableViewCell.m */; };
@@ -107,7 +106,6 @@
 		525DD00019CB2F51008B1762 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
 		525DD00119CB2F51008B1762 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
 		525DD00319CB36A3008B1762 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		52B93FAE19D0FC4000E9655B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		52B93FB019D1133700E9655B /* reply-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-icon.png"; sourceTree = "<group>"; };
 		52B93FB319D11A0600E9655B /* retweet-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-128.png"; sourceTree = "<group>"; };
 		52B93FB919D12A8B00E9655B /* TwitterDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterDetailsTableViewCell.h; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 				52575F6219CA40B000F37DD3 /* CoreGraphics.framework in Frameworks */,
 				52575F6419CA40B000F37DD3 /* UIKit.framework in Frameworks */,
 				52575F6019CA40B000F37DD3 /* Foundation.framework in Frameworks */,
-				52B93FAF19D0FC4000E9655B /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +185,6 @@
 		52575F5E19CA40B000F37DD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				52B93FAE19D0FC4000E9655B /* FacebookSDK.framework */,
 				52F7338119CC82380036E5B1 /* CoreData.framework */,
 				52F7337719CC5D210036E5B1 /* Accounts.framework */,
 				52F7337519CC5D050036E5B1 /* Social.framework */,

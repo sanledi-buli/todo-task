@@ -9,7 +9,6 @@
 #import "ApplicationController.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
-#import <FacebookSDK/FacebookSDK.h>
 
 @interface WebServiceController : ApplicationController
 
@@ -17,6 +16,6 @@
 
 - (void)getTweets;
 - (void)getTwitterAccountDetails;
-- (void)getFeedFacebookByUserID;
+- (void)getStatusFB;
 
 @end
