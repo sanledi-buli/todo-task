@@ -28,7 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    defaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning

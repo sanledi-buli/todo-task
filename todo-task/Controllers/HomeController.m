@@ -10,6 +10,7 @@
 #import "MFSideMenu.h"
 #import "TwitterManager.h"
 #import "TwitterAccountManager.h"
+#import "FacebookManager.h"
 #import "WebServiceController.h"
 
 @interface HomeController (){
@@ -31,13 +32,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    defaults = [NSUserDefaults standardUserDefaults];
     WebServiceController *webServiceController = [[WebServiceController alloc] init];
     if ([[defaults objectForKey:@"currentPage"] isEqualToString:@"twitter"]) {
         currentPage = @"twitter";
         [webServiceController getTweets];
         [webServiceController getTwitterAccountDetails];
     } else if([[defaults objectForKey:@"currentPage"] isEqualToString:@"facebook"]) {
+        currentPage = @"facebook";
          [webServiceController getStatusFB];
     }else{
     
@@ -60,7 +61,7 @@
     if ([currentPage isEqualToString:@"twitter"]) {
         return [[TwitterManager getAllRecords] count];
     }else if ([currentPage isEqualToString:@"facebook"]){
-        return 10;
+        return [[FacebookManager getAllRecords] count];
     }
     return 0;
 }
@@ -71,6 +72,8 @@
     if ([currentPage isEqualToString:@"twitter"]) {
         NSArray *tweets = [TwitterManager getAllRecords];
         Twitter *tweet = [tweets objectAtIndex:indexPath.row];
+        [defaults setObject:tweet.tweetBody forKey:@"currenContent"];
+        [defaults synchronize];
         TwitterAccount *twitterAccount = [[TwitterAccountManager getAllRecords] lastObject];
         
         [cell.userName setText:twitterAccount.accountName];
@@ -87,7 +90,22 @@
         [cell.likeBtn setImage:[UIImage imageNamed:@"retweet-128.png"] forState:UIControlStateNormal];
         [cell.likeBtn addTarget:self action:@selector(reTweet:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
         [cell.likeBtn setTitle:@"" forState:UIControlStateNormal];
-    } else {
+    } else if([currentPage isEqualToString:@"facebook"]) {
+        NSArray *statuses = [FacebookManager getAllRecords];
+        Facebook *status = [statuses objectAtIndex:indexPath.row];
+        [defaults setObject:status.statusFB forKey:@"currentContent"];
+        [defaults synchronize];
+        
+        [cell.userName setText:status.accountFB];
+        [cell.screenName setText:@""];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:FACEBOOK_PROFILE_PICTURE]];
+        [cell.profilePicture setImage:[UIImage imageWithData:imageData]];
+        cell.mainContent.lineBreakMode = NSLineBreakByWordWrapping;
+        cell.mainContent.numberOfLines = 0;
+        [cell.mainContent setText:status.statusFB];
+        [cell.dateCreated setText:[self dateFormatter:status.createdAt]];
+        [cell.replyBtn addTarget:self action:@selector(commentStatus:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
+        [cell.likeBtn addTarget:self action:@selector(likeStatus:) forControlEvents:(UIControlEvents)UIControlEventTouchDown];
         
     }
     return cell;

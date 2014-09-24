@@ -13,6 +13,8 @@
 - (NSString *)dateFormatter:(NSDate *)sourceDate;
 - (IBAction)replyTweet:(id)sender;
 - (IBAction)reTweet:(id)sender;
+- (IBAction)commentStatus:(id)sender;
+- (IBAction)likeStatus:(id)sender;
 
 
 @end

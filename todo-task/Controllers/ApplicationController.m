@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    defaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,13 +48,24 @@
 /* pragma selector action */
 
 - (IBAction)replyTweet:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reply" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reply" message:@"Please enter text to replay." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alert show];
 }
 
 - (IBAction)reTweet:(id)sender{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Retweet" message:@"Do you want retweet this tweet ?" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Cancel", nil];
+    [alert show];
+}
+
+- (IBAction)commentStatus:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Comment" message:@"Please enter text to comment." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (IBAction)likeStatus:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like" message:@"Do you want to like this status ?" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Cancel", nil];
     [alert show];
 }
 

@@ -21,6 +21,7 @@ NSUserDefaults *defaults;
 #define FACEBOOK_API_URI @"https://graph.facebook.com"
 #define FACEBOOK_USER_ID @"177321525623964"
 #define FACEBOOK_APP_ID @"577325145727529"
+#define FACEBOOK_PROFILE_PICTURE @"http://graph.facebook.com/7Langit/picture"
 
 @interface Boot : NSObject
 
