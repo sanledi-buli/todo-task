@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520830C519D2DEE5002CD54A /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 520830C419D2DEE5002CD54A /* FacebookManager.m */; };
+		520830C819D2E164002CD54A /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 520830C719D2E164002CD54A /* Facebook.m */; };
 		523FB91919D0600C00E4FC43 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FB91819D0600C00E4FC43 /* HomeTableViewCell.m */; };
 		5243483619CF0E0C0016F32B /* TwitterAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5243483519CF0E0C0016F32B /* TwitterAccount.m */; };
 		5243483919CF0E470016F32B /* TwitterAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5243483819CF0E470016F32B /* TwitterAccountManager.m */; };
@@ -62,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520830C319D2DEE5002CD54A /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
+		520830C419D2DEE5002CD54A /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
+		520830C619D2E164002CD54A /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		520830C719D2E164002CD54A /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		523FB91719D0600C00E4FC43 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		523FB91819D0600C00E4FC43 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		5243483419CF0E0C0016F32B /* TwitterAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccount.h; sourceTree = "<group>"; };
@@ -277,6 +283,8 @@
 		52575F9919CA45FD00F37DD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				520830C619D2E164002CD54A /* Facebook.h */,
+				520830C719D2E164002CD54A /* Facebook.m */,
 				5243483419CF0E0C0016F32B /* TwitterAccount.h */,
 				5243483519CF0E0C0016F32B /* TwitterAccount.m */,
 				52F7338619CC83EB0036E5B1 /* Replay.h */,
@@ -331,6 +339,8 @@
 		52F7337D19CC7A520036E5B1 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				520830C319D2DEE5002CD54A /* FacebookManager.h */,
+				520830C419D2DEE5002CD54A /* FacebookManager.m */,
 				5243483719CF0E470016F32B /* TwitterAccountManager.h */,
 				5243483819CF0E470016F32B /* TwitterAccountManager.m */,
 				52F7337E19CC7A750036E5B1 /* TwitterManager.h */,
@@ -441,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52575FEE19CA494500F37DD3 /* MFSideMenu.h in Sources */,
+				520830C519D2DEE5002CD54A /* FacebookManager.m in Sources */,
 				52575FEF19CA494500F37DD3 /* MFSideMenuContainerViewController.h in Sources */,
 				52575FF019CA494500F37DD3 /* MFSideMenuContainerViewController.m in Sources */,
 				52575FF119CA494500F37DD3 /* MFSideMenuShadow.h in Sources */,
@@ -458,6 +469,7 @@
 				523FB91919D0600C00E4FC43 /* HomeTableViewCell.m in Sources */,
 				525DD00219CB2F51008B1762 /* WebServiceController.m in Sources */,
 				5243483919CF0E470016F32B /* TwitterAccountManager.m in Sources */,
+				520830C819D2E164002CD54A /* Facebook.m in Sources */,
 				525DCFF419CB0469008B1762 /* SideMenuController.m in Sources */,
 				525DCFF719CB063A008B1762 /* HomeController.m in Sources */,
 				52B93FBB19D12A8B00E9655B /* TwitterDetailsTableViewCell.m in Sources */,

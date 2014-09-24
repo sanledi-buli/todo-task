@@ -40,7 +40,6 @@
         NSLog(@"%@", [error localizedDescription]);
         return nil;
     } else if(twitterAccounts && [twitterAccounts count] > 0){
-        NSLog(@"Twitter count is %lu",(unsigned long) [twitterAccounts count]);
         return twitterAccounts;
     }else{
         NSLog(@"No record in %@",NSStringFromClass([TwitterAccount class]));

@@ -8,9 +8,8 @@
 
 #import "WebService.h"
 #import "TwitterManager.h"
-#import "Twitter.h"
 #import "TwitterAccountManager.h"
-#import "TwitterAccount.h"
+#import "FacebookManager.h"
 
 @interface WebService (){
     NSArray *resourceData;
@@ -25,7 +24,7 @@
         Twitter *tweet = [TwitterManager newTweet];
         [tweet setTweetBody:data[@"text"]];
         [tweet setTweetId:data[@"id_str"]];
-        [tweet setTweetDate:[self toDate:data[@"created_at"]]];
+        [tweet setTweetDate:[self toDate:data[@"created_at"] from:@"twitter"]];
         [tweet setCountRetweet:data[@"retweeted"]];
         [TwitterManager saveTweet:tweet];
     }
@@ -40,16 +39,23 @@
 }
 
 + (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource{
+    [FacebookManager deleteAll];
     for (id data in dataSource){
-    
+        Facebook *status = [FacebookManager newStatus];
+        [status setStatusFB:data[@"message"]];
+        [status setStatusId:data[@"id"]];
+        [status setAccountFB:data[@"from"][@"name"]];
+        [status setCreatedAt:[self toDate:data[@"updated_time"] from:@"facebook"]];
+        [FacebookManager saveStatus:status];
     }
 }
 
-+ (NSDate *)toDate:(id)createdAt{
++ (NSDate *)toDate:(id)createdAt from:(NSString *)type{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [dateFormatter setLocale:locale];
-    [dateFormatter setDateFormat:@"EEE MMM dd HH:mm:ss Z yyyy"];
+    [type isEqualToString:@"twitter"] ? [dateFormatter setDateFormat:@"EEE MMM dd HH:mm:ss Z yyyy"] : [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+    
     NSDate *date = [dateFormatter dateFromString:createdAt];
     
     return date;
