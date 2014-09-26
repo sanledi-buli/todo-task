@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,18 +40,19 @@
 
 - (void)getTweets
 {
+    [self showHUDProgress];
     ACAccountStore *account = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [account
                                   accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     [account requestAccessToAccountsWithType:accountType
                                      options:nil
                                   completion:^(BOOL granted, NSError *error) {
-                                      if (granted == YES) {
-                                          NSLog(@"granted");
+                                      if (granted) {
                                           NSArray *arrayOfAccounts = [account
                                                                       accountsWithAccountType:accountType];
                                           if ([arrayOfAccounts count] > 0) {
                                               ACAccount *twitterAccount = [arrayOfAccounts lastObject];
+                                              
                                               NSURL *requestURL = [NSURL URLWithString:TWITTER_API_TIMELINE_URI];
                                               NSDictionary *params = @{
                                                                        @"screen_name": TWITTER_SCREEN_NAME,
@@ -71,18 +72,20 @@
                                                                                                             options:NSJSONReadingMutableLeaves error:&error];
                                                       if ([dataSource count] > 0) {
                                                           [WebService parserResourcesTwitter:dataSource];
+                                                          [MMProgressHUD dismissWithSuccess:@"Completed" title:nil afterDelay:3];
                                                       }
                                                   } else {
                                                       NSLog(@"%@",error);
+                                                      [MMProgressHUD dismissWithError:[error localizedDescription] title:@"Failure" afterDelay:3];
                                                   }
                                               }];
                                           }
                                           else{
-                                              NSLog(@"No account on accountStore");
+                                              [MMProgressHUD dismissWithError:@"No account available" title:@"Failure" afterDelay:3];
                                           }
                                       }
                                       else{
-                                          NSLog(@"Not granted");
+                                          [MMProgressHUD dismissWithError:@"Access Denied" title:@"Failure" afterDelay:3];
                                       }
                                   }];
 }
@@ -96,7 +99,7 @@
     [account requestAccessToAccountsWithType:accountType
                                      options:nil
                                   completion:^(BOOL granted, NSError *error) {
-                                      if (granted == YES) {
+                                      if (granted) {
                                           NSArray *arrayOfAccounts = [account accountsWithAccountType:accountType];
                                           if ([arrayOfAccounts count] > 0) {
                                               ACAccount *twitterAccount = [arrayOfAccounts lastObject];
@@ -113,24 +116,21 @@
                                                           [WebService parserResourcesTwitterAccount:dataSource];
                                                       }
                                                   } else {
-                                                      NSLog(@"%@",error);
+                                                      NSLog(@"==== Twitter Account API ====");
+                                                      NSLog(@"[%@]",[error localizedDescription]);
                                                   }
                                               }];
                                               
                                               
-                                          } else {
-                                              NSLog(@"No account on accountStore");
                                           }
-                                      } else {
-                                          NSLog(@"Not granted");
                                       }
-                                      
                                   }];
 }
 
 /* GET Facebook status */
 
 - (void)getStatusFB{
+    [self showHUDProgress];
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountTypeFacebook =
     [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
@@ -145,48 +145,40 @@
                                            if(granted){
                                                ACAccount *facebookAccount;
                                                NSArray *accounts = [accountStore accountsWithAccountType:accountTypeFacebook];
-                                               facebookAccount = [accounts lastObject];
-                                               NSURL *feedURL = [NSURL
-                                                                 URLWithString:[NSString
-                                                                                stringWithFormat:@"%@/%@/statuses?limit=10&access_token=%@",FACEBOOK_API_URI,FACEBOOK_USER_ID,facebookAccount.credential.oauthToken]];
-                                               
-                                               SLRequest *feedRequest = [SLRequest requestForServiceType:SLServiceTypeFacebook
-                                                                                           requestMethod:SLRequestMethodGET
-                                                                                                     URL:feedURL
-                                                                                              parameters:nil];
-                                               [feedRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
-                                                {
-                                                    if (!error) {
-                                                        NSDictionary *rawData = [NSJSONSerialization JSONObjectWithData:responseData
-                                                                                                                   options:NSJSONReadingMutableLeaves
-                                                                                                                     error:&error];
-                                                        if (rawData) {
-                                                            NSDictionary *sourceData = rawData[@"data"];
-                                                            [WebService parserResourcesFacebookStatuses:sourceData];
+                                               if ([accounts count] > 0) {
+                                                   facebookAccount = [accounts lastObject];
+                                                   NSURL *feedURL = [NSURL
+                                                                     URLWithString:[NSString
+                                                                                    stringWithFormat:@"%@/%@/statuses?limit=10&access_token=%@",FACEBOOK_API_URI,FACEBOOK_USER_ID,facebookAccount.credential.oauthToken]];
+                                                   
+                                                   SLRequest *feedRequest = [SLRequest requestForServiceType:SLServiceTypeFacebook
+                                                                                               requestMethod:SLRequestMethodGET
+                                                                                                         URL:feedURL
+                                                                                                  parameters:nil];
+                                                   [feedRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+                                                    {
+                                                        if (!error) {
+                                                            NSDictionary *rawData = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                                                                    options:NSJSONReadingMutableLeaves
+                                                                                                                      error:&error];
+                                                            if (rawData) {
+                                                                NSDictionary *sourceData = rawData[@"data"];
+                                                                [WebService parserResourcesFacebookStatuses:sourceData];
+                                                            }
+                                                            [MMProgressHUD dismissWithSuccess:@"Completed" title:nil afterDelay:3];
+                                                        } else {
+                                                            [MMProgressHUD dismissWithError:[error localizedDescription] title:@"Failure" afterDelay:3];
                                                         }
-                                                        
-                                                    } else {
-                                                        NSLog(@"%@",[error localizedDescription]);
-                                                    }
-                                                }];
+                                                    }];
+                                               } else {
+                                                   [MMProgressHUD dismissWithError:@"No account available" title:nil afterDelay:3];
+                                               }
+                                        
                                            } else {
-                                               NSLog(@"Access Denied");
-                                               NSLog(@"[%@]",[error localizedDescription]);
+                                               [MMProgressHUD dismissWithError:@"Access Denied" title:@"Failure" afterDelay:3];
                                            }
                                        }
      ];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

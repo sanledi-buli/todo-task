@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMProgressHUD.h"
+#import "MMProgressHUDOverlayView.h"
 
 @interface ApplicationController : UIViewController
 
 - (NSString *)dateFormatter:(NSDate *)sourceDate;
+- (void)showHUDProgress;
 - (IBAction)replyTweet:(id)sender;
 - (IBAction)reTweet:(id)sender;
 - (IBAction)commentStatus:(id)sender;

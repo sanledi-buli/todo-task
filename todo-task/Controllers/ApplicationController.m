@@ -45,6 +45,15 @@
     return stringFromDate;
 }
 
+/* pragma progress HUD */
+
+- (void)showHUDProgress{
+    [[[MMProgressHUD sharedHUD] overlayView] setOverlayMode:MMProgressHUDWindowOverlayModeLinear];
+    [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleFade];
+    [MMProgressHUD showWithTitle:@"Sync" status:@"Please Wait..."];
+}
+
+
 /* pragma selector action */
 
 - (IBAction)replyTweet:(id)sender{
