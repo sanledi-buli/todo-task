@@ -9,7 +9,9 @@
 #import "WebServiceController.h"
 #import "WebService.h"
 
-@interface WebServiceController ()
+@interface WebServiceController (){
+    WebService *service;
+}
 
 @end
 
@@ -27,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    service = [[WebService alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +73,7 @@
                                                       NSArray *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
                                                                                                             options:NSJSONReadingMutableLeaves error:&error];
                                                       if ([dataSource count] > 0) {
-                                                          [WebService parserResourcesTwitter:dataSource];
+                                                          [service parserResourcesTwitter:dataSource];
                                                           [MMProgressHUD dismissWithSuccess:@"Completed" title:nil afterDelay:3];
                                                       }
                                                   } else {
@@ -113,7 +115,7 @@
                                                       NSDictionary *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
                                                                                                                  options:NSJSONReadingMutableLeaves error:&error];
                                                       if ([dataSource count] > 0) {
-                                                          [WebService parserResourcesTwitterAccount:dataSource];
+                                                          [service parserResourcesTwitterAccount:dataSource];
                                                       }
                                                   } else {
                                                       NSLog(@"==== Twitter Account API ====");
@@ -163,7 +165,7 @@
                                                                                                                       error:&error];
                                                             if (rawData) {
                                                                 NSDictionary *sourceData = rawData[@"data"];
-                                                                [WebService parserResourcesFacebookStatuses:sourceData];
+                                                                [service parserResourcesFacebookStatuses:sourceData];
                                                             }
                                                             [MMProgressHUD dismissWithSuccess:@"Completed" title:nil afterDelay:3];
                                                         } else {

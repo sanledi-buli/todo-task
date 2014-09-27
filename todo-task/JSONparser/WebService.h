@@ -10,8 +10,10 @@
 
 @interface WebService : NSObject
 
-+ (void)parserResourcesTwitter:(NSArray *)dataSource;
-+ (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource;
-+ (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource;
+- (void)parserResourcesTwitter:(NSArray *)dataSource;
+- (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource;
+- (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource;
+
+@property (nonatomic,assign)id<CallBackDelegate>delegate;
 
 @end

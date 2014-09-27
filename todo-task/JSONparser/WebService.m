@@ -18,7 +18,7 @@
 
 @implementation WebService
 
-+ (void)parserResourcesTwitter:(NSArray *)dataSource{
+- (void)parserResourcesTwitter:(NSArray *)dataSource{
     [TwitterManager deleteAll];
     for (id data in dataSource) {
         Twitter *tweet = [TwitterManager newTweet];
@@ -30,7 +30,7 @@
     }
 }
 
-+ (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource{
+- (void)parserResourcesTwitterAccount:(NSDictionary *)dataSource{
     [TwitterAccountManager deleteAll];
     TwitterAccount *twitterAccount = [TwitterAccountManager newTwitterAccount];
         [twitterAccount setAccountName:dataSource[@"name"]];
@@ -38,7 +38,7 @@
         [TwitterAccountManager saveTwitterAccount:twitterAccount];
 }
 
-+ (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource{
+- (void)parserResourcesFacebookStatuses:(NSDictionary *)dataSource{
     [FacebookManager deleteAll];
     for (id data in dataSource){
         Facebook *status = [FacebookManager newStatus];
@@ -50,7 +50,7 @@
     }
 }
 
-+ (NSDate *)toDate:(id)createdAt from:(NSString *)type{
+- (NSDate *)toDate:(id)createdAt from:(NSString *)type{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [dateFormatter setLocale:locale];
