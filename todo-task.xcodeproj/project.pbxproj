@@ -89,7 +89,6 @@
 		520830C419D2DEE5002CD54A /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		520830C619D2E164002CD54A /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		520830C719D2E164002CD54A /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
-		522855A619D45F72000FE78A /* CallBack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallBack.h; sourceTree = "<group>"; };
 		522855AB19D47DA3000FE78A /* MMHud.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMHud.h; sourceTree = "<group>"; };
 		522855AC19D47DA3000FE78A /* MMHud.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMHud.m; sourceTree = "<group>"; };
 		522855AD19D47DA3000FE78A /* MMLinearProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMLinearProgressView.h; sourceTree = "<group>"; };
@@ -155,6 +154,7 @@
 		525DD00019CB2F51008B1762 /* WebServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceController.h; sourceTree = "<group>"; };
 		525DD00119CB2F51008B1762 /* WebServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceController.m; sourceTree = "<group>"; };
 		525DD00319CB36A3008B1762 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		52602C3719D67D0200375629 /* CallBackDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallBackDelegate.h; sourceTree = "<group>"; };
 		52B93FB019D1133700E9655B /* reply-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-icon.png"; sourceTree = "<group>"; };
 		52B93FB319D11A0600E9655B /* retweet-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-128.png"; sourceTree = "<group>"; };
 		52B93FB919D12A8B00E9655B /* TwitterDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterDetailsTableViewCell.h; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 		522855A519D45F4F000FE78A /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				522855A619D45F72000FE78A /* CallBack.h */,
+				52602C3719D67D0200375629 /* CallBackDelegate.h */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
