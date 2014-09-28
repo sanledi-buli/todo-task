@@ -114,7 +114,11 @@
         [defaults setObject:status.statusId forKey:@"currentID"];
         [defaults synchronize];
     }
-    [self performSegueWithIdentifier:@"twitterDetails" sender:self];
+    [self performSegueWithIdentifier:@"detailsSegue" sender:self];
+}
+
+- (void)afterSave{
+    [self.homeTableView reloadData];
 }
 
 /*

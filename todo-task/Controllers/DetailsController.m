@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Task. All rights reserved.
 //
 
-#import "TweetDetailsController.h"
+#import "DetailsController.h"
 #import "TwitterManager.h"
 #import "TwitterAccountManager.h"
 #import "FacebookManager.h"
 
-@interface TweetDetailsController (){
+@interface DetailsController (){
     NSString *currentPage;
 }
 
 @end
 
-@implementation TweetDetailsController
+@implementation DetailsController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,8 +55,8 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"twitterDetailsTableViewCell";
-    TwitterDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"detailsTableViewCell";
+    DetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if ([currentPage isEqualToString:@"twitter"]) {
         Twitter *tweet = [TwitterManager getByTweetId:[defaults objectForKey:@"currentID"]];
         TwitterAccount *twitterAccount = [[TwitterAccountManager getAllRecords] lastObject];

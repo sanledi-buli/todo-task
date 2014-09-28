@@ -14,7 +14,7 @@
 
 @property ACAccount *facebookAccount;
 
-- (void)getTweets;
+- (void)getTweets;  
 - (void)getTwitterAccountDetails;
 - (void)getStatusFB;
 

@@ -7,11 +7,9 @@
 //
 
 #import "WebServiceController.h"
-#import "WebService.h"
+#import "JSONParser.h"
 
-@interface WebServiceController (){
-    WebService *service;
-}
+@interface WebServiceController ()
 
 @end
 
@@ -29,7 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    service = [[WebService alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +70,11 @@
                                                       NSArray *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
                                                                                                             options:NSJSONReadingMutableLeaves error:&error];
                                                       if ([dataSource count] > 0) {
-                                                          [service parserResourcesTwitter:dataSource];
+                                                          [TwitterManager deleteAll];
+                                                          for (id data in dataSource){
+                                                              Twitter *tweet = [JSONParser parserResourcesTwitter:data];
+                                                              [TwitterManager saveTweet:tweet];
+                                                          }
                                                           [MMProgressHUD dismissWithSuccess:@"Completed" title:nil afterDelay:3];
                                                       }
                                                   } else {
@@ -115,7 +116,9 @@
                                                       NSDictionary *dataSource = [NSJSONSerialization JSONObjectWithData:responseData
                                                                                                                  options:NSJSONReadingMutableLeaves error:&error];
                                                       if ([dataSource count] > 0) {
-                                                          [service parserResourcesTwitterAccount:dataSource];
+                                                          [TwitterAccountManager deleteAll];
+                                                          TwitterAccount *account = [JSONParser parserResourcesTwitterAccount:dataSource];
+                                                          [TwitterAccountManager saveTwitterAccount:account];
                                                       }
                                                   } else {
                                                       NSLog(@"==== Twitter Account API ====");
@@ -164,8 +167,12 @@
                                                                                                                     options:NSJSONReadingMutableLeaves
                                                                                                                       error:&error];
                                                             if (rawData) {
+                                                                [FacebookManager deleteAll];
                                                                 NSDictionary *sourceData = rawData[@"data"];
-                                                                [service parserResourcesFacebookStatuses:sourceData];
+                                                                for (id data in sourceData){
+                                                                    Facebook *status = [JSONParser parserResourcesFacebookStatuses:data];
+                                                                    [FacebookManager saveStatus:status];
+                                                                }
                                                             }
                                                             [MMProgressHUD dismissWithSuccess:@"Completed" title:nil afterDelay:3];
                                                         } else {

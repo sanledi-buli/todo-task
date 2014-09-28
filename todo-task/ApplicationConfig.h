@@ -1,8 +1,8 @@
 //
-//  Boot.h
+//  ApplicationConfig.h
 //  todo-task
 //
-//  Created by MacBook Pro on 9/18/14.
+//  Created by MacBook Pro on 9/28/14.
 //  Copyright (c) 2014 Task. All rights reserved.
 //
 
@@ -23,6 +23,13 @@ NSUserDefaults *defaults;
 #define FACEBOOK_APP_ID @"577325145727529"
 #define FACEBOOK_PROFILE_PICTURE @"http://graph.facebook.com/7Langit/picture"
 
-@interface Boot : NSObject
+@interface ApplicationConfig : NSObject
+
+@end
+
+@protocol CallBackDelegate <NSObject>
+
+@optional
+- (void) afterSync;
 
 @end

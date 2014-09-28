@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Task. All rights reserved.
 //
 
-#import "TwitterDetailsTableViewCell.h"
+#import "DetailsTableViewCell.h"
 
-@implementation TwitterDetailsTableViewCell
+@implementation DetailsTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
